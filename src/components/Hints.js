@@ -91,40 +91,4 @@ export default function Hints() {
     )
 }
 
-/*
 
-defs : [
-    {
-        word: "",
-        used: bool
-    }
-    {
-        word: "",
-        used: bool
-    }
-    {
-        word: "",
-        used: bool
-    }
-    {
-        word: "",
-        used: bool
-    }
-    {
-        word: "",
-        used: bool
-    }
-]
-
-word: {
-
-},
-
-hints: {
-    defs: [],
-    syn : [],
-    ant: []
-}
-
-
-*/
