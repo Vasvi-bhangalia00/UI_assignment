@@ -4,7 +4,9 @@ import { deductScore } from '../actions/score'
 import {synUsed,antUsed} from '../actions/relatedWords'
 import { defUsed } from '../actions/definitions'
 import { fetchHintsTypes } from '../actions/hints'
+import {Dropdown} from 'react-bootstrap'
 export default function Hints() {
+
     const defss = useSelector(state => state.api.def)
     const syns=useSelector(state=>state.relWord.syn)
     const ants=useSelector(state=>state.relWord.ant)
@@ -12,12 +14,19 @@ export default function Hints() {
     const [antHint,setAntHint]=useState('')
     const [defHint,setDefHint]=useState('')
     const dispatch = useDispatch()
+    const[synUs,setSynUsed]=useState(false)
+    const[antUs,setAntUsed]=useState(false)
+    const[defUs,setDefUsed]=useState(false)
     const [index1, setIndex1] = useState(0)
     const [index2, setIndex2] = useState(0)
-    const [index3, setIndex3] = useState(0)
+    const [index3, setIndex3] = useState(1)
   
     const displaySynonym=()=>
     {
+        setAntUsed(false)
+        setDefUsed(false)
+        setSynUsed(true)
+        
         const synonyms=syns.map(syn=>syn);
         if( index1 <synonyms.length && synonyms[index1].word && synonyms[index1].used===false)
         {
@@ -29,12 +38,16 @@ export default function Hints() {
         }
         else{
             setSynHint('No synonyms found')
+            setSynUsed(false)
         }
         
-
+        
     }
     const displayAntonym=()=>
     {
+        setSynUsed(false)
+        setDefUsed(false)
+        setAntUsed(true)
         const antonyms=ants.map(ant=>ant);
         if(antonyms)
         {
@@ -51,15 +64,17 @@ export default function Hints() {
         }
         }
     }
-    const handleNewWord=()=>{
+    const handleNewHints=()=>{
           setAntHint('')
           setDefHint('')
           setSynHint('')
     }
     const displayDef=()=>
     {
+        setAntUsed(false)
+        setSynUsed(false)
+        setDefUsed(true)
         const definitions=defss.map(def=>def);
-        definitions[0].used=false;
          if(index3 < definitions.length && definitions[index3].text && definitions[index3].used===false )
             {
              setDefHint(definitions[index3].text);
@@ -75,56 +90,28 @@ export default function Hints() {
     }
     return (
         <div>
-          <div className='hint-button'>Take hint(-3pts)</div >
-          <span className='hint-options'>
-        <button onClick={handleNewWord}>Refresh hints</button>
-         <button onClick={displaySynonym }>Synonym</button>
-           {synHint}
-          <button onClick={displayAntonym}>Antonym</button>
-          {antHint}
-          <button onClick={displayDef}>Definition</button>
-          {defHint}
-          
-          </span>
-        </div>  
+          <Dropdown>
+  <Dropdown.Toggle  id="dropdown-basic" className='hint-button'>
+  Take hint(-3pts)
+  </Dropdown.Toggle>
+
+  <Dropdown.Menu>
+    <Dropdown.Item onSelect={displaySynonym }>Synonym</Dropdown.Item>
+   
+    <Dropdown.Item onSelect={displayAntonym }>Antonym</Dropdown.Item>
+    <Dropdown.Item onSelect={displayDef} >Definition</Dropdown.Item>
+  </Dropdown.Menu>
+</Dropdown>
+<span className='hint-block'>
+{synUs? `Synonym is : ${synHint}`:''}
+{antUs? `Antonym is : ${antHint}`:''}
+ {defUs?`Defintion is : ${defHint}`:''}  
+ {!synUs && !antUs && !defUs ? 'No Hints taken':''}    
+ </span>
+ <button className='reset' onClick={handleNewHints}>Refresh Hints</button>
+    </div>
+        
         
     )
 }
 
-/*
-
-defs : [
-    {
-        word: "",
-        used: bool
-    }
-    {
-        word: "",
-        used: bool
-    }
-    {
-        word: "",
-        used: bool
-    }
-    {
-        word: "",
-        used: bool
-    }
-    {
-        word: "",
-        used: bool
-    }
-]
-
-word: {
-
-},
-
-hints: {
-    defs: [],
-    syn : [],
-    ant: []
-}
-
-
-*/

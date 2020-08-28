@@ -10,6 +10,13 @@
   border-color: crimson ;
   
 }
+.result-dis
+{
+  margin:4px;
+  font-size: 20px;
+  color:darkgreen;
+
+}
 .display-score
 {
   position: absolute;
@@ -72,13 +79,7 @@
  margin-top:20px;
  border-radius: 12px;
 }
-.result
-{
-  margin:4px;
-  padding:2px;
-  color:darkgreen;
-
-}
+ 
 .row
 {
   background-image: linear-gradient(to top, #cfd9df 0%, #e2ebf0 100%);
@@ -97,9 +98,9 @@
 .Hints-Pane {
   margin-top: 10px;
 }
-.hint-options button
+.reset
 {
-  margin-top:14px;
+  margin-top:100px;
   display:block;
   font-size: 14px;
   background-image: linear-gradient(to right, #f78ca0 0%, #f9748f 19%, #fd868c 60%, #fe9a8b 100%);
@@ -115,6 +116,17 @@
   font-size: 16px;
   margin-bottom: 20px;
 }
+.hint-block{
+  display: block;
+  width: fit-content;
+  padding: 10px;
+  margin: 10px;
+  margin-top: 20px;
+  border: 1px solid #aaa;
+  border-radius: 6px;
+  background-image: linear-gradient(120deg, #a1c4fd 0%, #c2e9fb 100%);
+  text-align: left;
+}
 .history-block{
   display: block;
   padding: 10px;
@@ -128,8 +140,6 @@
 {
   font-size:16px;
   font-weight: bold;
-
-
 }
 .resetGame button  {
   border-radius: 6px;

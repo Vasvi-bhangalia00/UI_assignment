@@ -25,8 +25,9 @@ export const getNewWord = () => ( dispatch, getState ) => {
      }));
    }
     dispatch(showHistoryWord(null));
-    dispatch({type: "RESET_GUESS"})
+    dispatch({type:"RESET_GUESS"})
     dispatch({type: "RESET_HINTS"})
+    
     axios.get(CONFIG.API_URL.wordsapi+CONFIG.API_URL.RANDOM_WORD+CONFIG.API_KEY)
     .then(res =>
             dispatch(addWord(res.data.word))

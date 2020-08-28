@@ -9,6 +9,7 @@ import Guess from './Guess'
 import { deductScore} from '../actions/score.js'
 import History from './History'
 import { resetGame } from '../actions/History.js'
+import {Badge} from 'react-bootstrap'
 
 const Container = () => {
     const wordFetched = useSelector(state => state.word.currWord)
@@ -41,7 +42,7 @@ const Container = () => {
     return (
       <div className='App'>
       <div className="main" >
-        <div className='display-score'>Score: <button className='score'>{score}</button> </div>
+        <span className='display-score'>Score:{' '}<Badge variant="info" >{ score}</Badge></span>
     <h1 className='heading'>Guess the Word</h1>
        <Guess />
         </div>

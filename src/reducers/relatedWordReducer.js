@@ -11,6 +11,7 @@ const relatedWordReducer = (state = { isLoading: false, syn:[], ant: [], errMess
             return {...state, ant : state.ant.map((item, idx) => idx === action.payload ? {...item, used: true} : item)}
         case SYN_USED :
                 return {...state, syn : state.syn.map((item, idx) => idx === action.payload ? {...item, used: true} : item)}
+    
         default :
         return state;
     }

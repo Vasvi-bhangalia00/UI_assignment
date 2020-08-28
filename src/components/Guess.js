@@ -48,7 +48,7 @@ export default function Guess() {
                 defs.length > 0 && defs.filter( (item,idx) => idx===0).map(item => (<p>{item.text}</p>))
           }
           </div>
-        <div className='result'><h3>--{result}--</h3></div> 
+        <div className='result-dis'>--{result}--</div> 
             
         </div>
     )

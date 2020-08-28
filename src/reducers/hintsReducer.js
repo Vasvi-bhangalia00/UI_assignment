@@ -14,8 +14,3 @@ const hintsReducer = (state ={ usedHints:[],status:'',id:0}, action) => {
   };
   export default hintsReducer;
 
-//   export const fetchHintsTypes = (hintType,hint) => ({
-//     type: FETCH_HINTS_SUCCESS,
-//     hintType,
-//     hint,
-//   });
